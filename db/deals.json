@@ -3846,5 +3846,82 @@
     "updatedAt": "2022-01-23T03:50:52.426Z",
     "accountManager": "db2751a2-5a29-4820-84b6-8d4a378bf463",
     "index": 0
+  },
+  {
+    "id": "0c33f553-6272-4487-b2c4-edc84f596b75",
+    "name": "",
+    "type": "",
+    "stage": "",
+    "description": "",
+    "amount": 0,
+    "createdAt": "2023-02-07T16:00:37.711Z",
+    "updatedAt": "2023-02-07T16:00:37.711Z",
+    "index": 0
+  },
+  {
+    "id": "8c887007-292c-453a-9177-d4179e29b03e",
+    "name": "",
+    "type": "",
+    "stage": "",
+    "description": "",
+    "amount": 0,
+    "createdAt": "2023-02-07T16:04:50.384Z",
+    "updatedAt": "2023-02-07T16:04:50.384Z",
+    "index": 0
+  },
+  {
+    "id": "f5b041e7-5960-4396-a2e9-e132e33cff2d",
+    "name": "",
+    "type": "",
+    "stage": "",
+    "description": "",
+    "amount": 0,
+    "createdAt": "2023-02-07T16:04:54.861Z",
+    "updatedAt": "2023-02-07T16:04:54.861Z",
+    "index": 0
+  },
+  {
+    "id": "f6d946b2-90ad-4ec4-89c1-218de6b83e92",
+    "name": "",
+    "type": "",
+    "stage": "",
+    "description": "",
+    "amount": 0,
+    "createdAt": "2023-02-07T16:13:55.490Z",
+    "updatedAt": "2023-02-07T16:13:55.490Z",
+    "index": 0
+  },
+  {
+    "id": "70acd114-84ea-40b3-be6d-b95290dca9e9",
+    "name": "",
+    "type": "",
+    "stage": "",
+    "description": "",
+    "amount": 0,
+    "createdAt": "2023-02-07T16:14:05.669Z",
+    "updatedAt": "2023-02-07T16:14:05.669Z",
+    "index": 0
+  },
+  {
+    "id": "bf31580e-0331-451b-9921-69df072f1884",
+    "name": "",
+    "type": "",
+    "stage": "",
+    "description": "",
+    "amount": 0,
+    "createdAt": "2023-02-07T16:14:11.317Z",
+    "updatedAt": "2023-02-07T16:14:11.317Z",
+    "index": 0
+  },
+  {
+    "id": "2ffc1f40-a2b1-4e43-ad6b-ef335794c8be",
+    "name": "",
+    "type": "",
+    "stage": "",
+    "description": "",
+    "amount": 0,
+    "createdAt": "2023-02-07T16:14:15.129Z",
+    "updatedAt": "2023-02-07T16:14:15.129Z",
+    "index": 0
   }
 ]
