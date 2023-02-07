@@ -2,6 +2,7 @@ import express, { Router } from 'express'
 import { remult, UserInfo } from 'remult'
 import { AccountManager } from '../AccountManagers/AccountManager.entity'
 import { api } from './api'
+import { getUser } from './getUser'
 
 export const auth = Router()
 auth.use(express.json())
@@ -30,4 +31,4 @@ auth.post('/api/signOut', (req, res) => {
   res.json('signed out')
 })
 
-auth.get('/api/currentUser', (req, res) => res.json(req.session!['user']))
+auth.get('/api/currentUser', (req, res ) =>  res.send(getUser()))//res.json(req.session!['user']))

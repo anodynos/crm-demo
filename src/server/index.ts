@@ -5,10 +5,14 @@ import sslRedirect from 'heroku-ssl-redirect'
 import swaggerUi from 'swagger-ui-express'
 import { api } from './api'
 import { auth } from './auth'
+import { buildSchema } from 'graphql';
+import { graphqlHTTP } from 'express-graphql';
+import { remultGraphql } from 'remult/graphql';
+// @note: seems to works fine
+// import voyagerMiddleware from 'graphql-voyager/middleware/express';
 
 const app = express()
 app.use(sslRedirect())
-//app.use(helmet({ contentSecurityPolicy: false,crossOriginResourcePolicy:false }));//removed because avatar image urls point to a different website
 app.use(compression())
 
 app.use(
@@ -23,11 +27,22 @@ app.use(api)
 app.use(
   '/api/docs',
   swaggerUi.serve,
-  swaggerUi.setup(api.openApiDoc({ title: 'remult-react-todo' }))
+  swaggerUi.setup(api.openApiDoc({ title: 'remult-crm-demo' }))
 )
+
+const { schema, rootValue } = remultGraphql(api);
+app.use('/api/graphql', graphqlHTTP({
+  schema: buildSchema(schema),
+  rootValue,
+  graphiql: true,
+}));
+
+// @note: seems to works fine
+// app.use(voyagerMiddleware({ endpointUrl: '/api/graphql',  }))
 
 app.use(express.static('build'))
 app.use('/*', async (req, res) => {
   res.sendFile(process.cwd() + '/build/index.html')
 })
-app.listen(process.env.PORT || 3002, () => console.log('Server started'))
+const port = process.env.PORT || 3002
+app.listen(port, () => console.log(`Server started at ${port}`))
