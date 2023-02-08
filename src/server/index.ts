@@ -8,8 +8,7 @@ import { auth } from './auth'
 import { buildSchema } from 'graphql';
 import { graphqlHTTP } from 'express-graphql';
 import { remultGraphql } from 'remult/graphql';
-// @note: seems to works fine
-// import voyagerMiddleware from 'graphql-voyager/middleware/express';
+import voyagerMiddleware from 'graphql-voyager/middleware/express';
 
 const app = express()
 app.use(sslRedirect())
@@ -24,12 +23,17 @@ app.use(auth)
 app.get('/api/test', (req, res) => res.send('ok'))
 app.use(api)
 
+const openApiDocument = api.openApiDoc({ title: 'remult-crm-demo' });
+
+// API Docs
 app.use(
   '/api/docs',
   swaggerUi.serve,
-  swaggerUi.setup(api.openApiDoc({ title: 'remult-crm-demo' }))
-)
+  swaggerUi.setup(openApiDocument));
 
+app.get("/api/openApi.json", (req, res) => res.json(openApiDocument));
+
+// GraphQL
 const { schema, rootValue } = remultGraphql(api);
 app.use('/api/graphql', graphqlHTTP({
   schema: buildSchema(schema),
@@ -37,12 +41,14 @@ app.use('/api/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
-// @note: seems to works fine
-// app.use(voyagerMiddleware({ endpointUrl: '/api/graphql',  }))
+app.use('/api/voyager', voyagerMiddleware({ endpointUrl: '/api/graphql',  }))
 
+// Static
 app.use(express.static('build'))
 app.use('/*', async (req, res) => {
   res.sendFile(process.cwd() + '/build/index.html')
 })
+
+// Serve
 const port = process.env.PORT || 3002
 app.listen(port, () => console.log(`Server started at ${port}`))
